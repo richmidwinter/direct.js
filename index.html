@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>direct.js</title>
+    <style>
+      a {
+        color: blue;
+        padding: 10px 0px;
+      }
+      body {
+        width: 320px;
+        margin: 0 auto;
+      }
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/ecmascript" src="direct.js"></script>
+    <script type="text/ecmascript">
+      (function() {
+        $route.init(
+          {
+            target: "div#content"
+          },
+          [
+            {
+              url: "/book/\\d{3}-\\d{10}",
+              template: "book.html"
+            },
+            {
+              url: "/order/\\d+",
+              template: "order.html"
+            },
+            {
+              url: "/",
+              controller: function() {
+                $('div#content').append('<p>Enjoy.</p>');
+              },
+              template: "include.html"
+            }
+          ]
+        );
+      })();
+    </script>
+  </head>
+  <body>
+    <h1>direct.js</h1>
+
+    <a href="#/">[index]</a>
+    <a href="#/book/978-0071613743">[book]</a>
+    <a href="#/order/1234">[order]</a>
+
+    <div id="content"></div>
+  </body>
+</html>
